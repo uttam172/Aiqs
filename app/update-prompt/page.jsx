@@ -5,13 +5,13 @@ import { useRouter, useSearchParams } from "next/navigation"
 
 import Form from '@components/Form'
 
-const EditPrompt = () => {
+const UpdatePrompt = () => {
 
     const router = useRouter()
     const searchParams = useSearchParams()
     const promptId = searchParams.get('id')
 
-    const [submitting, setSubmitting] = useState(false)
+    const [submitting, setIsSubmitting] = useState(false)
     const [post, setPost] = useState({
         prompt: '',
         tag: '',
@@ -33,7 +33,7 @@ const EditPrompt = () => {
 
     const updatePrompt = async (e) => {
         e.preventDefault()
-        setSubmitting(true)
+        setIsSubmitting(true)
 
         if (!promptId) return alert('Prompt ID not found')
 
@@ -53,7 +53,7 @@ const EditPrompt = () => {
         } catch (error) {
             console.log(error)
         } finally {
-            setSubmitting(false)
+            setIsSubmitting(false)
         }
     }
 
@@ -68,4 +68,4 @@ const EditPrompt = () => {
     )
 }
 
-export default EditPrompt
+export default UpdatePrompt
